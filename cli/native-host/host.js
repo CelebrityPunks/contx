@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-// ContX Native Messaging Host
+// Explaude Native Messaging Host
 // Receives tweet data from the Chrome extension and writes tweets.md
 
 const fs = require('fs');
 const path = require('path');
 
-const CONTX_DIR = path.join(require('os').homedir(), '.contx');
+const CONTX_DIR = path.join(require('os').homedir(), '.explaude');
 const TWEETS_FILE = path.join(CONTX_DIR, 'tweets.md');
 
 // --- Native Messaging Protocol ---
@@ -70,8 +70,8 @@ function sendMessage(obj) {
 // --- Tweet Processing ---
 
 function generateMarkdown(tweets) {
-  let md = '# ContX — Saved Tweets\n\n';
-  md += 'Tweets saved via ContX Chrome extension. Newest first.\n\n';
+  let md = '# Explaude — Saved Tweets\n\n';
+  md += 'Tweets saved via Explaude Chrome extension. Newest first.\n\n';
   md += '---\n\n';
 
   for (const tweet of tweets) {

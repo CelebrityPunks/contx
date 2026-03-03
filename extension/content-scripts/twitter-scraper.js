@@ -1,4 +1,4 @@
-// ContX — Twitter/X Tweet Scraper
+// Explaude — Twitter/X Tweet Scraper
 // Content script injected on twitter.com and x.com
 // Captures right-clicked element and scrapes tweet data on demand
 

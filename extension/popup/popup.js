@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const md = generateFullMarkdown(allTweets);
     const blob = new Blob([md], { type: 'text/markdown' });
     const url = URL.createObjectURL(blob);
-    chrome.downloads.download({ url, filename: 'contx-tweets.md', saveAs: true });
+    chrome.downloads.download({ url, filename: 'explaude-tweets.md', saveAs: true });
   });
 
   // Copy all
@@ -170,8 +170,8 @@ function tweetToMarkdown(tweet) {
 }
 
 function generateFullMarkdown(tweets) {
-  let md = '# ContX — Saved Tweets\n\n';
-  md += 'Tweets saved via ContX Chrome extension. Newest first.\n\n';
+  let md = '# Explaude — Saved Tweets\n\n';
+  md += 'Tweets saved via Explaude Chrome extension. Newest first.\n\n';
   md += '---\n\n';
   for (const tweet of tweets) {
     md += tweetToMarkdown(tweet) + '\n';

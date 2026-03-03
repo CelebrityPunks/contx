@@ -1,14 +1,14 @@
-// ContX — Service Worker
+// Explaude — Service Worker
 // Handles context menu, message routing, storage, and native messaging export
 
-const NATIVE_HOST = 'com.contx.native';
+const NATIVE_HOST = 'com.explaude.native';
 
 // --- Context Menu Setup ---
 
 chrome.runtime.onInstalled.addListener((details) => {
   chrome.contextMenus.create({
-    id: 'save-to-contx',
-    title: 'Save to ContX',
+    id: 'save-to-explaude',
+    title: 'Save to Explaude',
     contexts: ['all'],
     documentUrlPatterns: [
       'https://twitter.com/*',
@@ -26,7 +26,7 @@ chrome.runtime.onInstalled.addListener((details) => {
 // --- Context Menu Click ---
 
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
-  if (info.menuItemId !== 'save-to-contx' || !tab?.id) return;
+  if (info.menuItemId !== 'save-to-explaude' || !tab?.id) return;
 
   try {
     const response = await chrome.tabs.sendMessage(tab.id, { action: 'scrape-tweet' });
@@ -82,11 +82,11 @@ function autoExport(tweets) {
     (response) => {
       if (chrome.runtime.lastError) {
         // Native host not installed — that's OK, tweets are still in chrome.storage
-        console.log('[ContX] Native host not available:', chrome.runtime.lastError.message);
+        console.log('[Explaude] Native host not available:', chrome.runtime.lastError.message);
         return;
       }
       if (response && !response.success) {
-        console.error('[ContX] Native write failed:', response.error);
+        console.error('[Explaude] Native write failed:', response.error);
       }
     }
   );
@@ -116,25 +116,25 @@ function showNotification(tabId, type, message) {
   chrome.scripting.executeScript({
     target: { tabId },
     func: (msg, color, icon) => {
-      const existing = document.getElementById('contx-notification');
+      const existing = document.getElementById('explaude-notification');
       if (existing) existing.remove();
 
       const div = document.createElement('div');
-      div.id = 'contx-notification';
+      div.id = 'explaude-notification';
       div.style.cssText = `
         position: fixed; bottom: 24px; right: 24px; z-index: 999999;
         background: ${color}; color: white; padding: 12px 20px;
         border-radius: 10px; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
         font-size: 14px; font-weight: 600; box-shadow: 0 4px 16px rgba(0,0,0,0.3);
         display: flex; align-items: center; gap: 8px;
-        animation: contxSlideIn 0.3s ease-out;
+        animation: explaudeSlideIn 0.3s ease-out;
         transition: opacity 0.3s ease;
       `;
       div.innerHTML = `<span style="font-size:18px">${icon}</span> ${msg}`;
 
       const style = document.createElement('style');
       style.textContent = `
-        @keyframes contxSlideIn {
+        @keyframes explaudeSlideIn {
           from { transform: translateY(20px); opacity: 0; }
           to { transform: translateY(0); opacity: 1; }
         }

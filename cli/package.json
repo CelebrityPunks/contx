@@ -1,9 +1,9 @@
 {
-  "name": "contx",
+  "name": "explaude",
   "version": "1.0.0",
-  "description": "Setup tool for ContX Chrome Extension — saves tweets as context for Claude Code",
+  "description": "Setup tool for Explaude Chrome Extension — saves tweets as context for Claude Code",
   "bin": {
-    "contx": "./bin/contx.js"
+    "explaude": "./bin/explaude.js"
   },
   "keywords": ["claude", "twitter", "chrome-extension", "ai-context", "tweets"],
   "license": "MIT"

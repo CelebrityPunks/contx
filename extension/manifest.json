@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "ContX",
+  "name": "Explaude",
   "version": "1.0.0",
   "description": "Right-click any tweet to save it as context for Claude Code. Build AI context from your Twitter feed.",
   "icons": {
@@ -36,6 +36,6 @@
       "16": "icons/icon16.png",
       "32": "icons/icon32.png"
     },
-    "default_title": "ContX — Saved Tweets"
+    "default_title": "Explaude — Saved Tweets"
   }
 }
